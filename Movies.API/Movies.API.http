@@ -1,1 +1,9 @@
-@Movies.API_HostAddress = http://localhost:5268
+### Create a new movie
+POST {{Movies.API_HostAddress}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "Inception",
+  "yearOfRelease": 2010,
+  "genres": ["Action", "Sci-Fi"]
+}
