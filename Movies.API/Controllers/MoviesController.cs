@@ -30,7 +30,7 @@ public class MoviesController : ControllerBase
             Genres = movie.Genres
         };
         
-        return Created($"/{ApiEndpoints.Movies.Create}/{movieResponse.Id}", movieResponse);
+        return CreatedAtAction(nameof(Get), new { id = movie.Id }, movieResponse);
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
