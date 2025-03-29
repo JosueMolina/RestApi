@@ -7,3 +7,11 @@ Content-Type: application/json
   "yearOfRelease": 2010,
   "genres": ["Action", "Sci-Fi"]
 }
+
+### Get movie by ID
+GET {{Movies.API_HostAddress}}/api/movies/{{Id}}
+Content-Type: application/json
+
+### Get all movies
+GET {{Movies.API_HostAddress}}/api/movies
+Content-Type: application/json
