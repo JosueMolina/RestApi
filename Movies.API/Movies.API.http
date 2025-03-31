@@ -15,3 +15,13 @@ Content-Type: application/json
 ### Get all movies
 GET {{Movies.API_HostAddress}}/api/movies
 Content-Type: application/json
+
+### Update a movie
+PUT {{Movies.API_HostAddress}}/api/movies/{{id}}
+Content-Type: application/json
+
+{
+  "title": "Inception Updated",
+  "yearOfRelease": 2010,
+  "genres": ["Action", "Sci-Fi", "Thriller"]
+}
