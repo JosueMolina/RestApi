@@ -25,3 +25,7 @@ Content-Type: application/json
   "yearOfRelease": 2010,
   "genres": ["Action", "Sci-Fi", "Thriller"]
 }
+
+### Delete a movie
+DELETE {{Movies.API_HostAddress}}/api/movies/{{id}}
+Content-Type: application/json
