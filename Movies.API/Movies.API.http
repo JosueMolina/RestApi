@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ### Get movie by ID
-GET {{Movies.API_HostAddress}}/api/movies/{{Id}}
+GET {{Movies.API_HostAddress}}/api/movies/{{idOrSlug}}
 Content-Type: application/json
 
 ### Get all movies

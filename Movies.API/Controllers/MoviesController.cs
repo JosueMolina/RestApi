@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Movies.API.Mapping;
 using Movies.Application.Repositories;
 using Movies.Contracts.Requests;
-using Movies.Contracts.Responses;
 
 namespace Movies.API.Controllers;
 
@@ -24,13 +23,15 @@ public class MoviesController : ControllerBase
 
         var response = movie.MapToMovieResponse();
         
-        return CreatedAtAction(nameof(Get), new { id = movie.Id }, response);
+        return CreatedAtAction(nameof(Get), new { idOrSlug = movie.Id }, response);
     }
 
     [HttpGet(ApiEndpoints.Movies.Get)]
-    public async Task<IActionResult> Get([FromRoute] Guid id)
+    public async Task<IActionResult> Get([FromRoute] string idOrSlug)
     {
-        var movie = await _movieRepository.GetByIdAsync(id);
+        var movie = Guid.TryParse(idOrSlug, out var movieId) ?
+            await _movieRepository.GetByIdAsync(movieId) :
+            await _movieRepository.GetBySlugAsync(idOrSlug);
         
         if (movie is null)
         {
