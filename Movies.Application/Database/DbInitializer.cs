@@ -14,6 +14,7 @@ public class DbInitializer
   public async Task InitializeAsync()
   {
     using var connection = await _dbConnectionFactory.CreateConnectionAsync();
+    
     await connection.ExecuteAsync("""
       create table if not exists movies (
         Id UUID primary key,
@@ -27,6 +28,13 @@ public class DbInitializer
       on movies 
       using btree(slug);
     """);
+    
+    await connection.ExecuteAsync("""
+      create table if not exists genres (
+        movieId UUID references movies (Id),
+        name TEXT not null);
+    """);
+    
   }
   
 }
