@@ -63,4 +63,9 @@ public class MovieRepository : IMovieRepository
   {
     throw new NotImplementedException();
   }
+
+  public Task<bool> ExistsByIdAsync(Guid id)
+  {
+    throw new NotImplementedException();
+  }
 }
