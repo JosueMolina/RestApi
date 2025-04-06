@@ -1,3 +1,4 @@
+using Movies.API.Mapping;
 using Movies.Application;
 using Movies.Application.Database;
 
@@ -13,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddDatabase(connectionString);
 
 var app = builder.Build();
+app.UseMiddleware<ValidationMappingMiddleware>();
 app.MapControllers();
 
 // Configure the HTTP request pipeline.
