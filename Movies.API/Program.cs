@@ -26,6 +26,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 var dbInitializer = app.Services.GetRequiredService<DbInitializer>();
-await dbInitializer.InitializeAsync();
+await dbInitializer.InitializeAsync(CancellationToken.None);
 
 app.Run();
